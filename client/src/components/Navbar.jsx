@@ -1,32 +1,62 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Navbar() {
 
-  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
 
   const logout = () => {
 
     localStorage.removeItem("token");
 
-    navigate("/");
+    window.location.href = "/";
 
   };
 
   return (
-    <div className="bg-black text-white px-6 py-4 flex justify-between">
 
-      <h1 className="text-xl font-bold">
+    <nav className="bg-black text-white p-6 flex justify-between items-center">
+
+      <h1 className="text-3xl font-bold">
         Team Task Manager
       </h1>
 
-      <button
-        onClick={logout}
-        className="bg-red-500 px-4 py-2 rounded"
-      >
-        Logout
-      </button>
+      <div className="flex gap-6 items-center">
 
-    </div>
+        {!token ? (
+
+          <>
+
+            <Link
+              to="/"
+              className="hover:text-gray-300"
+            >
+              Login
+            </Link>
+
+            <Link
+              to="/register"
+              className="hover:text-gray-300"
+            >
+              Register
+            </Link>
+
+          </>
+
+        ) : (
+
+          <button
+            onClick={logout}
+            className="bg-red-500 px-4 py-2 rounded hover:bg-red-600"
+          >
+            Logout
+          </button>
+
+        )}
+
+      </div>
+
+    </nav>
+
   );
 }
 
