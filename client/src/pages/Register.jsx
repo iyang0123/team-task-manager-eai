@@ -79,9 +79,11 @@ function Register() {
             />
 
             <button
-                type="submit"
-                className="bg-blue-600 text-white p-3 rounded">
-            </button>
+  type="submit"
+  className="bg-blue-600 text-white p-3 rounded"
+>
+  Register
+</button>
 
           </form>
 
